@@ -16,7 +16,7 @@
   git checkout feat/이름
 
 3. 문제 풀이 후 커밋
-  git commit -m "feat: 1234 풀이"
+  git commit -m "[문제 출처(플랫폼)] / 문제이름"
 
 4. 원격 저장소에 push
   git push origin feat/이름
