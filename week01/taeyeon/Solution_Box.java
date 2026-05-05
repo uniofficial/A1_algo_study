@@ -1,4 +1,4 @@
-class Solution {
+public class Solution_Box {
     public int solution(int n, int w, int num) {
         int h = (n / w) + 1;
         int[][] box = new int[h][w];
