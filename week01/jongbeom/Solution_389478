@@ -1,0 +1,38 @@
+class Solution {
+    public int solution(int n, int w, int num) {
+        
+        //num의 row 구하기
+        int row = (num - 1) / w;
+        //num의 pos 구하기 (줄 안에서 몇 번째인지)
+        int pos = (num - 1) % w;
+        
+        //num의 col 구하기
+        int col;
+        if(row % 2 == 0){
+            col = pos;
+        }else{
+            col = (w-1) - pos;
+        }
+        
+        //num의 최대 행 구하기
+        int maxRow = (n-1) / w;
+        //num의 행의 개수 구하기
+        int lastCount = (n-1) % w + 1;
+        
+        boolean exist;
+        if(maxRow % 2 == 0) {
+            exist = (col < lastCount);
+        }else{
+            exist = (col >= w-lastCount);
+        }
+        
+        int answer = maxRow - row;
+        if(!exist) answer--;
+        
+        
+        
+        return answer+1;
+        
+        
+    }
+}
