@@ -1,0 +1,52 @@
+class Solution {
+	//최대 공약수
+    public static int gcd(int a, int b){
+           if(b==0) return a;
+           return gcd(b, a% b);
+       }
+        //최소 공배수
+        public static int lcm(int a, int b){
+            int c = gcd(a,b);
+            return a* b / c;
+        }
+        
+    
+    public int solution(int[][] signals) {
+        int answer = 0;
+        
+        int limit = 1;
+        //최소 공배수를 구하기 위한 코드
+        for(int i=0; i<signals.length; i++){
+            int g = signals[i][0];
+            int y = signals[i][1];
+            int r = signals[i][2];
+            
+            int len = g+ y + r;
+            limit = lcm(limit, len);
+        }
+            
+            for(int t=1; t<limit; t++){
+                boolean allYello = true;
+                
+                for(int i=0; i<signals.length; i++){
+                    int g = signals[i][0];
+                    int y = signals[i][1];
+                    int r = signals[i][2];
+                    
+                    int len = g + y + r;
+                    int x = (t-1) % len;
+                    //x가 노란불 범위에 있지 않다면 false후 break
+                    if(!(g <= x && x < g + y)){
+                        allYello = false;
+                        break;
+                    }
+                }
+                if(allYello) return t;
+            
+        }
+        
+        
+       
+        return -1;
+    }
+}
